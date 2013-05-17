@@ -192,11 +192,11 @@ default['postgresql']['pg_hba'] = [
   {:type => 'host', :db => 'all', :user => 'all', :addr => '127.0.0.1/32', :method => 'md5'},
   {:type => 'host', :db => 'all', :user => 'all', :addr => '::1/128', :method => 'md5'},
   {:type => 'host', :db => 'replication', :user => 'replicator', :addr => '12.345.67.890/32', :method => 'trust'},
-  {:type => 'hostssl', :db => 'myenergy', :user => 'myenergy', :addr => '0.0.0.0 0.0.0.0', :method => 'md5'},
-  {:type => 'hostssl', :db => 'statistics', :user => 'myenergy', :addr => '0.0.0.0 0.0.0.0', :method => 'md5'},
-  {:type => 'hostssl', :db => 'documents', :user => 'myenergy', :addr => '0.0.0.0 0.0.0.0', :method => 'md5'},
-  {:type => 'hostssl', :db => 'ea-docs', :user => 'myenergy', :addr => '0.0.0.0 0.0.0.0', :method => 'md5'},
-  {:type => 'hostssl', :db => 'collector', :user => 'myenergy', :addr => '0.0.0.0 0.0.0.0', :method => 'md5'}
+  {:type => 'hostssl', :db => 'website', :user => 'db_user', :addr => '0.0.0.0 0.0.0.0', :method => 'md5'},
+  {:type => 'hostssl', :db => 'statistics', :user => 'db_user', :addr => '0.0.0.0 0.0.0.0', :method => 'md5'},
+  {:type => 'hostssl', :db => 'documents', :user => 'db_user', :addr => '0.0.0.0 0.0.0.0', :method => 'md5'},
+  {:type => 'hostssl', :db => 'ea-docs', :user => 'db_user', :addr => '0.0.0.0 0.0.0.0', :method => 'md5'},
+  {:type => 'hostssl', :db => 'application', :user => 'db_user', :addr => '0.0.0.0 0.0.0.0', :method => 'md5'}
 ]
 
 default['postgresql']['password'] = Hash.new
