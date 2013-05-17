@@ -3,7 +3,7 @@
 # A shell script that refreshed collector code when updates are available
 #
 
-cd /home/ubuntu/collector/current
+cd /home/ubuntu/application/current
 git pull | grep "Already up-to-date" >/dev/null 2>&1
 if [ $? -ne 0 ]
         then
