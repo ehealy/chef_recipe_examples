@@ -7,6 +7,6 @@
 exit
 . /etc/profile.d/rbenv.sh
 
-cd /home/ubuntu/collector/current
+cd /home/ubuntu/application/current
 VERBOSE=0 RAILS_ENV=production rake resque:scheduler >/home/ubuntu/scheduler.log 2>&1 &
 echo $! > /home/ubuntu/scheduler.pid
