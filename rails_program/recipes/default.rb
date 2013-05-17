@@ -97,8 +97,8 @@ end
 
 
 
-# deploys Collector
-deploy "/home/ubuntu/collector" do
+# deploys Application
+deploy "/home/ubuntu/application" do
   ## Encryped git information
   git_creds = Chef::EncryptedDataBagItem.load("credentials", "git")
   repo git_creds['contents']
@@ -118,7 +118,7 @@ deploy "/home/ubuntu/collector" do
       rbenv_script "Switch Git Branch" do
         rbenv_version "1.9.3-p194"
         user "ubuntu" 
-        cwd "/home/ubuntu/collector/current"
+        cwd "/home/ubuntu/application/current"
         code %{git checkout master}
       end
 
@@ -126,7 +126,7 @@ deploy "/home/ubuntu/collector" do
       rbenv_script "Bundle" do
         rbenv_version "1.9.3-p194"
         user "ubuntu" 
-        cwd "/home/ubuntu/collector/current"
+        cwd "/home/ubuntu/application/current"
         code %{bundle}
       end
 
@@ -135,7 +135,7 @@ deploy "/home/ubuntu/collector" do
         rbenv_version "1.9.3-p194"
         user "ubuntu" 
         cwd "/home/ubuntu/"
-        code %{mkdir /home/ubuntu/collector/shared/doc}
+        code %{mkdir /home/ubuntu/application/shared/doc}
       end
 
       # Creates a log directory
@@ -143,14 +143,14 @@ deploy "/home/ubuntu/collector" do
         rbenv_version "1.9.3-p194"
         user "ubuntu" 
         cwd "/home/ubuntu/"
-        code %{mkdir /home/ubuntu/collector/shared/log}
+        code %{mkdir /home/ubuntu/application/shared/log}
       end
 
       # Adjusts the permissions on the folder just created
       rbenv_script "Change Shared Dir Permissions" do
         rbenv_version "1.9.3-p194"
         user "ubuntu" 
-        cwd "/home/ubuntu/collector"
+        cwd "/home/ubuntu/application"
         code %{sudo chown ubuntu shared/*}
       end
 
@@ -208,7 +208,7 @@ deploy "/home/ubuntu/collector" do
 
     config_files.each do |keyname|
       creds = Chef::EncryptedDataBagItem.load("credentials", keyname)
-      filename = %[/home/ubuntu/collector/current/config/#{creds["filename"]}]
+      filename = %[/home/ubuntu/application/current/config/#{creds["filename"]}]
       puts("Removing #{filename}")
       `rm #{filename}`
       puts("Writing #{filename}")
