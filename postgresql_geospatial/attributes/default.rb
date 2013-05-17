@@ -64,6 +64,9 @@ when "ubuntu"
   default['postgresql']['server']['packages'] = %w{postgresql-9.2 postgresql-contrib-9.2}
   default['postgresql']['contrib']['packages'] = %w{postgresql-contrib postgresql-contrib-9.2}
 
+  pw_creds = Chef::EncryptedDataBagItem.load("database", "geo_user_pw")
+  default['postgresql']['geo_user_pw'] = pw_creds['contents']
+
 when "fedora"
 
   if node['platform_version'].to_f <= 12
