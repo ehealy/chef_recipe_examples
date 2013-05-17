@@ -1,0 +1,5 @@
+# logrotate configuration file
+compress
+/home/ubuntu/*.log {
+  maxage 2
+}

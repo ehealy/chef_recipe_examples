@@ -1,0 +1,5 @@
+# mail logrotate configuration file
+compress
+/var/spool/mail/ubuntu {
+  maxage 4
+}
