@@ -144,7 +144,7 @@ echo "ALTER ROLE postgres ENCRYPTED PASSWORD '#{node['postgresql']['password']['
   action :run
 end
 
-# Creates read-only postgres user for applications
+# Creates the datbase
 bash "create weather db" do
   user 'postgres'
   code <<-EOH
